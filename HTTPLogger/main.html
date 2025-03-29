@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HTTP Request Logger</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="main-container">
+    <div class="tab-container">
+      <button class="tab-button" data-tab="logs">Logs</button>
+      <button class="tab-button" data-tab="request">Send & Get Request</button>
+      <button class="tab-button" data-tab="proxy">Proxy</button>
+    </div>
+    <!-- Filter bar di atas -->
+    <div class="filter-bar">
+      <label for="includePattern">Include URL patterns:</label>
+      <input type="text" id="includePattern" placeholder="e.g: *google*" />
+
+      <label for="excludePattern">Exclude URL patterns:</label>
+      <input type="text" id="excludePattern" placeholder="e.g: *facebook*" />
+
+      <button id="applyFilter">Apply Filter</button>
+      <button id="clearFilter">Clear Filter</button>
+      <button id="deleteSelected">Delete Selected</button>
+      <button id="clearLogs">Delete complete cache</button>
+    </div>
+
+    <!-- Form untuk mengirim permintaan HTTP -->
+    <div class="request-form">
+      <div id="requestTab" class="tab-content hidden">
+        <label for="requestUrl">URL:</label>
+          <input type="text" id="requestUrl" placeholder="Enter request URL" />
+          <label for="requestMethod">Method:</label>
+            <select id="requestMethod">
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+          </label>
+        </label>
+        <div class="request-section">
+          <label>Headers:</label>
+          <textarea id="requestHeaders"></textarea>
+        </div>
+        <div class="request-section">
+          <label>Body:</label>
+          <textarea id="requestBody"></textarea>
+        </div>
+        <div class="request-section">
+          <label>Response Content:</label>
+          <pre id="responseContent"></pre>
+        </div>
+        <button id="sendRequest">Send</button>
+      </div>
+    </div>
+
+    <div id="logsTab" class="tab-content">
+      <!-- Tabel log HTTP -->
+      <div class="table-container">
+        <table id="logTable">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Method</th>
+              <th>URL</th>
+              <th>Status</th>
+              <th>Type</th>
+              <th>IP</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <details id="responseDetailsPanel" open>
+      <summary>Response Details (click to open/close)</summary>
+        <div class="details-container">
+          <div class="details-panel" id="requestDetailsPanel">
+            <h3>Request Details</h3>
+            <pre id="requestDetails"></pre>
+          </div>
+          <div class="details-panel" id="responseDetailsPanel">
+            <h3>
+              Response Details
+            </h3>
+            <pre id="responseDetails"></pre>
+          </div>
+        </div>
+    </details>
+
+  <script src="main.js"></script>
+</body>
+</html>

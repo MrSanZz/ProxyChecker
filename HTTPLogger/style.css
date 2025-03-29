@@ -1,0 +1,101 @@
+/* Agar body bisa 100% tinggi */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    background: #3a3f4b;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Container utama, vertikal */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* agar memenuhi layar */
+  }
+  
+  /* Filter bar di atas (tingginya menyesuaikan konten) */
+  .filter-bar {
+    flex: 0 0 auto; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background-color: #808080;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Container tabel, mengambil sisa ruang, bisa di-scroll */
+  .table-container, .tab-content {
+    flex: 2 2 auto;            /* sisa ruang vertikal */
+    overflow-y: auto;          /* scroll jika tabel panjang */
+  }
+  
+  /* Tabel agar lebar penuh */
+  #logTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #logTable thead {
+    background-color: #808080;
+  }
+  
+  #logTable th,
+  #logTable td {
+    border: 1px solid #808080;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  
+  /* Panel detail di bagian bawah, dengan tinggi tetap/opsional */
+  .details-container {
+    flex: 0 0 200px;           /* contoh: tinggi 200px */
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #808080;
+  }
+  
+  /* Masing-masing panel detail bisa di-scroll jika isinya panjang */
+  .details-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    border-right: 1px solid #808080;
+  }
+  
+  .details-panel:last-child {
+    border-right: none;
+  }
+  
+  .details-panel h3 {
+    margin-top: 0;
+    font-size: 16px;
+  }
+  
+  .tab-container {
+    display: flex;
+    background: #282c34;
+    padding: 5px;
+  }
+  .tab-button {
+    background: #3a3f4b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  .tab-button:hover {
+    background: #4b5363;
+  }
+  .hidden {
+    display: none;
+  }
+  .request-section {
+    margin-bottom: 10px;
+  }

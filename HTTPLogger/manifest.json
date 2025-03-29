@@ -1,0 +1,37 @@
+{
+  "name": "HTTP Request LoggerV2 (MV3)",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Ekstensi untuk mencatat dan menampilkan HTTP request secara detail.",
+
+  "permissions": [
+    "webRequest",
+    "webRequestAuthProvider",
+    "storage",
+    "tabs",
+    "webRequest"
+  ],
+
+  "host_permissions": [
+    "*://*/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "Open HTTP Logger"
+  },
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["main.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
