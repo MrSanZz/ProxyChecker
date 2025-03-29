@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Applier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            width: 320px;
+            background: #f9f9f9;
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .proxy-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 8px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 5px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        .proxy-item:hover {
+            background: #f1f1f1;
+        }
+        .proxy-item span {
+            flex-grow: 1;
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .edit-btn, .del-btn {
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>Proxy Applier</h3>
+    <input type="text" id="proxyInput" placeholder="Select or enter IP:PORT">
+    <button id="startProxy">Start Proxy</button>
+    <button id="stopProxy">Stop Proxy</button>
+
+    <h4>Saved Proxies</h4>
+    <div id="proxyList"></div>
+
+    <button id="addProxy">➕ Add Proxy</button>
+
+    <div id="proxyForm" class="hidden">
+        <input type="text" id="titleInput" placeholder="Proxy Name (Optional)">
+        <input type="text" id="ipInput" placeholder="IP">
+        <input type="text" id="portInput" placeholder="Port">
+        <input type="text" id="userInput" placeholder="Username (Optional)">
+        <input type="password" id="passInput" placeholder="Password (Optional)">
+        <button id="saveProxy">💾 Save</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
