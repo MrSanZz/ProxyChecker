@@ -3,9 +3,18 @@ let requestLogs = [];
 
 // Fungsi mencatat request
 function onBeforeRequestListener(details) {
-  const { method, url, requestId, timeStamp, type, ip } = details;
+  const { method, url, requestId, timeStamp, type, ip, requestBody } = details;
 
-  // Buat object log
+  let body = "(No Body)";
+  if (requestBody) {
+    if (requestBody.raw && requestBody.raw.length > 0) {
+      const decoder = new TextDecoder("utf-8");
+      body = decoder.decode(requestBody.raw[0].bytes);
+    } else if (requestBody.formData) {
+      body = JSON.stringify(requestBody.formData);
+    }
+  }
+
   const logEntry = {
     requestId,
     method,
@@ -13,11 +22,12 @@ function onBeforeRequestListener(details) {
     type,
     ip: ip || "N/A",
     timeStamp,
-    // Bisa tambah field custom lain (misal protocol, cookies, dsb.)
+    requestBody: body,
   };
 
   requestLogs.push(logEntry);
 }
+
 
 // Fungsi mencatat status code (onCompleted)
 function onCompletedListener(details) {
@@ -50,7 +60,7 @@ function onHeadersReceivedListener(details) {
 chrome.webRequest.onBeforeRequest.addListener(
   onBeforeRequestListener,
   { urls: ["<all_urls>"] },
-  []
+  ["requestBody"]
 );
 
 chrome.webRequest.onCompleted.addListener(
