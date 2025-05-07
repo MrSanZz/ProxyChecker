@@ -1,4 +1,4 @@
-(function() {
+(function () {
     const originalFetch = window.fetch;
     window.fetch = async function (...args) {
       const response = await originalFetch.apply(this, args);
@@ -10,7 +10,7 @@
           url: clone.url,
           body: body
         });
-      });
+      }).catch(() => {}); // optional ignore
   
       return response;
     };
